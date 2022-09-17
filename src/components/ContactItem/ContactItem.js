@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export const ContactItem = ({ id, name, number, deleteBtn }) => {
   return (
@@ -12,4 +12,4 @@ export const ContactItem = ({ id, name, number, deleteBtn }) => {
   );
 };
 
-ContactItem.propTypes = {};
+// ContactItem.propTypes = {};

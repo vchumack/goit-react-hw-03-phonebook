@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 
@@ -7,7 +7,9 @@ export class ContactForm extends Component {
     name: '',
     number: '',
   };
-  static propTypes = {};
+  // static propTypes = {
+  //   submitForm: PropTypes.object,
+  // };
 
   id = nanoid();
 
@@ -44,6 +46,7 @@ export class ContactForm extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <form onSubmit={this.handleSubmitForm}>
         <label>
