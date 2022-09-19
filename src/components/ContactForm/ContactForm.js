@@ -5,7 +5,21 @@ import { nanoid } from 'nanoid';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone';
-// import { FormContacts } from './ContactForm.styled';
+
+const ErrorText = styled.p`
+  color: #ed7a84c8;
+  text-transform: lowercase;
+  font-size: 15px;
+`;
+
+const FormError = ({ name }) => {
+  return (
+    <ErrorMessage
+      name={name}
+      render={messege => <ErrorText>{messege}</ErrorText>}
+    />
+  );
+};
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -46,7 +60,7 @@ export function ContactForm({ submitForm }) {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-          <ErrorMessage name="name" />
+          <FormError name="name" title="title" />
         </Label>
         <Label>
           number
@@ -56,7 +70,7 @@ export function ContactForm({ submitForm }) {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-          <ErrorMessage name="number" />
+          <FormError name="number" title="title" />
         </Label>
         <BtnBox>
           <Button type="submit">Add contact</Button>
