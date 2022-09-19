@@ -3,6 +3,7 @@ import { Box } from './Box';
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
+import {TitlePhonebook, SecondTitlePhonebook} from './App.styled'
 
 
 export class App extends Component {
@@ -63,18 +64,20 @@ export class App extends Component {
     console.log('this.state render -- ', this.state);
     return (
       <Box
-        width="700px"
+        width="800px"
         pb={2}
         pt={2}
+        pl={6}
+        pr={6}
         ml="auto"
         mr={'auto'}
         mt={5}
         mb={5}
         bg="primaryBg"
       >
-        <h1>Phonebook</h1>
+        <TitlePhonebook>Phonebook</TitlePhonebook>
         <ContactForm submitForm={this.setValueSubmitForm } />
-        <h2>Contacts</h2>
+        <SecondTitlePhonebook>Contacts</SecondTitlePhonebook>
         <Filter changeInput={this.handleChangeInputFilter} />
         <ContactList contacts={visibleContacts} deleteBtn={ this.handleDeleteBtnClick} />
       </Box>

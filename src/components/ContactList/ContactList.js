@@ -1,10 +1,11 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { ContactItem } from 'components/ContactItem';
+import { UlContactList } from './ContactList.styled';
 
 export const ContactList = ({ contacts, deleteBtn }) => {
   return (
-    <ul>
+    <UlContactList>
       {contacts.map(({ id, name, number }) => {
         return (
           <ContactItem
@@ -16,7 +17,7 @@ export const ContactList = ({ contacts, deleteBtn }) => {
           />
         );
       })}
-    </ul>
+    </UlContactList>
   );
 };
 
