@@ -3,7 +3,8 @@ import { Box } from './Box';
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
-import {TitlePhonebook, SecondTitlePhonebook} from './App.styled'
+import { TitlePhonebook, SecondTitlePhonebook } from './App.styled'
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 
 export class App extends Component {
@@ -27,7 +28,7 @@ export class App extends Component {
 
   setValueSubmitForm = data => {
     if (this.checkAddingContacts(data.name)) {
-      alert(`${data.name} is already in contacts`);
+      Report.info(`${data.name} is already in contacts`);
       return;
     }
 
@@ -69,11 +70,13 @@ export class App extends Component {
         pt={2}
         pl={6}
         pr={6}
-        ml="auto"
-        mr={'auto'}
+        ml='auto'
+        mr='auto'
         mt={5}
         mb={5}
-        bg="primaryBg"
+        minHeight='1000px'
+        borderRadius='10px'
+        boxShadow='rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;'
       >
         <TitlePhonebook>Phonebook</TitlePhonebook>
         <ContactForm submitForm={this.setValueSubmitForm } />
