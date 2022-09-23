@@ -69,17 +69,19 @@ export class App extends Component {
     
   }
 // вызывается после каждого обновления
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
     console.log('componentDidUpdate');
     // console.log(prevProps);
-    console.log(prevState);
-    console.log(this.state);
+    // console.log(prevState);
+    // console.log(this.state);
 
     // проверка обязательна на обновления стейта, иначе зациклим компонент
-    if (this.state.contacts !== prevState.contacts) {
+    const { contacts } = this.state;
+    
+    if (contacts !== prevState.contacts) {
       console.log('обновилось поле');
 
-      localStorage.setItem('myContactList', JSON.stringify(this.state.contacts));
+      localStorage.setItem('myContactList', JSON.stringify(contacts));
     }
   }
 
