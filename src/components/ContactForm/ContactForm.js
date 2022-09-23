@@ -23,8 +23,8 @@ const FormError = ({ name }) => {
 };
 
 const schema = yup.object().shape({
-	name: yup.string().required(),
-	// number: yup.string().phone().required(),
+	name: yup.string().min(3).required(),
+	number: yup.string().min(5).required(),
 });
 
 export function ContactForm({ submitForm }) {
@@ -46,6 +46,7 @@ export function ContactForm({ submitForm }) {
 		submitForm(newContact);
 		resetForm();
 	};
+
 	return (
 		<Formik
 			initialValues={initialValues}
