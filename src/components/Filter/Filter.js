@@ -3,7 +3,7 @@ import { LabelFilter, InputFilter } from './Filter.styled';
 import PropTypes from 'prop-types';
 
 export const Filter = ({ changeInput }) => {
-	console.log(typeof changeInput);
+	// console.log(typeof changeInput);
 	return (
 		<LabelFilter>
 			Find contacts by Name

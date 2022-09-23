@@ -20,7 +20,7 @@ export class App extends Component {
 
 
   handleChangeInputFilter = e => {
-    console.log('e.currentTarget-- ', e.currentTarget);
+    // console.log('e.currentTarget-- ', e.currentTarget);
     const { value } = e.currentTarget;
 
     this.setState({ filter: value });
@@ -58,11 +58,36 @@ export class App extends Component {
     this.setState({ contacts: this.state.contacts.filter(el => el.id !== id) });
   };
 
+  // вызывается 1 раз при моунте компонента
+  componentDidMount() {
+    const parsedContacts = JSON.parse(localStorage.getItem('myContactList'));
+    console.log('parsedContacts', parsedContacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+    
+  }
+// вызывается после каждого обновления
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+    // console.log(prevProps);
+    console.log(prevState);
+    console.log(this.state);
+
+    // проверка обязательна на обновления стейта, иначе зациклим компонент
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('обновилось поле');
+
+      localStorage.setItem('myContactList', JSON.stringify(this.state.contacts));
+    }
+  }
+
   render() {
 
     const visibleContacts = this.filterContacts();
 
-    console.log('this.state render -- ', this.state);
+    // console.log('this.state render -- ', this.state);
     return (
       <Box
         width="800px"
