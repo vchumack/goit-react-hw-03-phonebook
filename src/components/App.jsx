@@ -58,14 +58,17 @@ export class App extends Component {
     this.setState({ contacts: this.state.contacts.filter(el => el.id !== id) });
   };
 
-  // вызывается 1 раз при моунте компонента
+  // вызывается 1 раз при маунте компонента
   componentDidMount() {
     const parsedContacts = JSON.parse(localStorage.getItem('myContactList'));
     console.log('parsedContacts', parsedContacts);
 
-    if (parsedContacts) {
+    if (parsedContacts && parsedContacts.length>0) {
       this.setState({ contacts: parsedContacts });
-    }
+    } else
+    {
+      
+      }
     
   }
 // вызывается после каждого обновления
